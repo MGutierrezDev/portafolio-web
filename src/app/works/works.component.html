@@ -1,0 +1,36 @@
+<div class="works">
+    <h1 class="heading" data-aos="zoom-in-up" data-aos-easing="linear" data-aos-duration="500">Proyectos
+        <span>anteriores</span>
+    </h1>
+    <h3 class="subheading" data-aos="zoom-in-up" data-aos-easing="linear" data-aos-duration="600">Repositorios github
+    </h3>
+    <div class="swiper works-container" data-aos="zoom-in-up" data-aos-easing="linear" data-aos-duration="700">
+        <div class="swiper-wrapper content">
+            <div class="swiper-slide card" *ngFor="let work of works">
+                <div class="card-content">
+                    <div class="image">
+                        <a href="{{work.html_url}}" target="_blank"><img src="assets/images/card_github.png" alt=""></a>
+                    </div>
+
+                    <div class="git-content">
+                        <span class="name">{{work.name}}</span>
+                        <span class="description">{{work.description}}</span>
+                    </div>
+                    <div class="rating">
+                        <a><i class="uil uil-star"></i><span>{{work.stargazers_count}}</span></a>
+                    </div>
+                    <div class="watchers">
+                        <a><i class="uil uil-eye"></i><span>{{work.watchers_count}}</span></a>
+                    </div>
+                    <div class="bottom">
+                        <a href="{{work.html_url}}">Repositorio</a>
+                        <div class="lenguaje">
+                            <a><i class="uil uil-arrow"></i><span>{{work.language}}</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="swiper-pagination"></div>
+</div>
