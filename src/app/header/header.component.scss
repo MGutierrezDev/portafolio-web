@@ -19,7 +19,9 @@
     cursor: pointer;
     transition: scale 0.2 ease;
 }
-
+#selected{
+    cursor: pointer;
+}
 .navbar {
     width: 100%;
     height: 80px;
@@ -99,7 +101,8 @@ nav ul li ul{
     transition: all 300ms ease;
 }
 
-nav ul li:hover ul{
+nav ul li:hover ul,
+nav ul li.open ul{
     visibility: visible;
     opacity: 1;
     top: 80px;

@@ -2,6 +2,7 @@
     min-height: 100vh;
     overflow: hidden;
     padding: 10%;
+    width: 100%;
 }
 .heading {
     text-align: center;
@@ -9,6 +10,7 @@
     font-weight: 600;
 }
 .about-content{
+    width: 100%;
     padding-top: 5rem;
     h2 {
         text-align: left;
@@ -41,7 +43,7 @@ p{
     }
 }
 
-@media screen and (max-width:760px) {
+@media screen and (max-width:1350px) {
     .lenguajes {
         flex-wrap: wrap;
         justify-content: flex-start;

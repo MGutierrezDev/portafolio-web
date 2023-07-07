@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { GithubService } from '../github.service';
 import Swiper from 'swiper';
 
@@ -9,9 +9,43 @@ import Swiper from 'swiper';
 })
 export class WorksComponent implements OnInit, AfterViewInit {
 
+  @ViewChild('workSlider', { static: false }) workSliderRef!: ElementRef;
   works: any;
-
+  swiperInstance: Swiper | null = null;
   constructor(private github: GithubService) { }
+
+  ngAfterViewInit(): void {
+    this.swiperInstance = new Swiper(".slide-content", {
+      slidesPerView: 3,
+      spaceBetween: 25,
+      loop: true,
+      centeredSlides: true,
+      grabCursor: true,
+      mousewheel: true,
+      keyboard: true,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+        dynamicBullets: true,
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+
+      breakpoints:{
+        0:{
+          slidesPerView: 1,
+        },
+        520:{
+          slidesPerView: 2,
+        },
+        950:{
+          slidesPerView: 3,
+        }
+      }
+    });
+  }
 
   ngOnInit(): void {
     this.github.loadRepos().subscribe((res: any) => {
@@ -19,22 +53,15 @@ export class WorksComponent implements OnInit, AfterViewInit {
     });
   }
 
-  ngAfterViewInit(): void {
-    var swiper = new Swiper(".swiper", {
-      effect: "coverflow",
-      grabCursor: true,
-      centeredSlides: true,
-      slidesPerView: "auto",
-      coverflowEffect: {
-        rotate: 50,
-        stretch: 0,
-        depth: 100,
-        modifier: 1,
-        slideShadows: true,
-      },
-      pagination: {
-        el: ".swiper-pagination",
-      }
-    });
+  onNextClick(): void {
+    if (this.swiperInstance) {
+      this.swiperInstance.slideNext();
+    }
+  }
+
+  onPrevClick(): void {
+    if (this.swiperInstance) {
+      this.swiperInstance.slidePrev();
+    }
   }
 }

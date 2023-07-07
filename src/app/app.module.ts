@@ -12,6 +12,8 @@ import { SistemasComponent } from './sistemas/sistemas.component';
 import { OthersComponent } from './others/others.component';
 import { WorksComponent } from './works/works.component';
 
+import { SwiperModule } from 'swiper/angular';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +28,8 @@ import { WorksComponent } from './works/works.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    SwiperModule
   ],
   providers: [],
   bootstrap: [AppComponent]
